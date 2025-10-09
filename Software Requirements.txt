@@ -1,0 +1,7 @@
+Software Requirements - 
+
+1) Visual Studio Code
+2) MongoDB Community Server
+3) Mongo Shell
+4) Postman
+5) Node JS LTS Version

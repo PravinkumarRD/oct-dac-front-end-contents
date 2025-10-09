@@ -1,0 +1,12 @@
+MEAN Stack - 
+
+	MongoDB Server
+	Express JS
+	Angular 20.x
+	Node JS
+
+SPA - Single Page Application
+	Authentication
+	Authorization
+	Security Trimming
+	Most of the features of Angular framework
