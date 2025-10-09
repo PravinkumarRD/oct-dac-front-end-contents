@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KPI Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .kpi-number {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      border-radius: 50%;
+      color: white;
+      margin: 10px;
+    }
+    .kpi-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .chart-container {
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <div class="container my-5">
+    <h1 class="text-center">KPI Dashboard</h1>
+
+    <!-- KPI Numbers -->
+    <div id="kpiContainer" class="kpi-container">
+      <!-- Dynamic KPI numbers will be inserted here -->
+    </div>
+
+    <!-- Chart Containers -->
+    <div class="chart-container">
+      <h2 class="text-center">Charts</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <canvas id="lineChart"></canvas>
+        </div>
+        <div class="col-md-6">
+          <canvas id="barChart"></canvas>
+        </div>
+        <div class="col-md-6">
+          <canvas id="columnChart"></canvas>
+        </div>
+        <div class="col-md-6">
+          <canvas id="funnelChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Establish WebSocket connection
+    const socket = new WebSocket('ws://localhost:3000');
+
+    let numbersData = [];
+    const maxDataPoints = 10;  // Limit to 10 data points
+
+    // Chart.js chart instances
+    const lineChartCtx = document.getElementById('lineChart').getContext('2d');
+    const barChartCtx = document.getElementById('barChart').getContext('2d');
+    const columnChartCtx = document.getElementById('columnChart').getContext('2d');
+    const funnelChartCtx = document.getElementById('funnelChart').getContext('2d');
+
+    // Create Chart.js instances
+    const lineChart = new Chart(lineChartCtx, {
+      type: 'line',
+      data: {
+        labels: [],
+        datasets: [{
+          label: 'KPI Data',
+          data: [],
+          fill: false,
+          borderColor: 'green',
+          tension: 0.1
+        }]
+      }
+    });
+
+    const barChart = new Chart(barChartCtx, {
+      type: 'bar',
+      data: {
+        labels: [],
+        datasets: [{
+          label: 'KPI Data',
+          data: [],
+          backgroundColor: 'rgba(0,123,255,0.5)',
+          borderColor: 'rgba(0,123,255,1)',
+          borderWidth: 1
+        }]
+      }
+    });
+
+    const columnChart = new Chart(columnChartCtx, {
+      type: 'bar',
+      data: {
+        labels: [],
+        datasets: [{
+          label: 'KPI Data',
+          data: [],
+          backgroundColor: 'rgba(40,167,69,0.5)',
+          borderColor: 'rgba(40,167,69,1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+      }
+    });
+
+    // Funnel chart mock-up (simple horizontal bars)
+    const funnelChart = new Chart(funnelChartCtx, {
+      type: 'bar', // Use 'bar' for horizontal bars
+      data: {
+        labels: ['Step 1', 'Step 2', 'Step 3', 'Step 4', 'Step 5'],
+        datasets: [{
+          label: 'Funnel Data',
+          data: [],
+          backgroundColor: ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56', '#ff5722'],
+          borderColor: '#fff',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        indexAxis: 'y', // This makes the bars horizontal
+        scales: {
+          x: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+    // Function to update the charts with new data
+    const updateCharts = (numbers) => {
+      // Update KPI numbers display
+      const container = document.getElementById('kpiContainer');
+      container.innerHTML = ''; // Clear existing
+
+      // Update numbers and ensure we only keep the latest 10 numbers
+      numbers.forEach((number, index) => {
+        const div = document.createElement('div');
+        div.classList.add('kpi-number');
+        
+        // Apply color based on number range
+        if (number <= 30) {
+          div.style.backgroundColor = 'red'; // Danger
+        } else if (number <= 60) {
+          div.style.backgroundColor = 'yellow'; // Average
+          div.style.color = 'black';
+        } else {
+          div.style.backgroundColor = 'green'; // Good
+        }
+
+        div.textContent = number;
+        container.appendChild(div);
+      });
+
+      // Function to add new data and remove oldest if exceeds maxDataPoints
+      const addData = (chart, numbers, labelPrefix) => {
+        if (chart.data.labels.length >= maxDataPoints) {
+          chart.data.labels.shift(); // Remove the first (oldest) label
+          chart.data.datasets[0].data.shift(); // Remove the first (oldest) data point
+        }
+        chart.data.labels.push(numbers); // Use actual number as label
+        chart.data.datasets[0].data.push(numbers); // Also add the same number to the data
+        chart.update();
+      };
+
+      // Update Line Chart with the first KPI data
+      addData(lineChart, numbers[0]);
+
+      // Update Bar Chart with the second KPI data
+      addData(barChart, numbers[1]);
+
+      // Update Column Chart with the third KPI data
+      addData(columnChart, numbers[2]);
+
+      // Funnel chart mock-up (simple horizontal bars)
+      funnelChartCtx.clearRect(0, 0, funnelChartCtx.canvas.width, funnelChartCtx.canvas.height);
+      const funnelData = numbers.map((num) => Math.min(num, 100)); // Limit funnel data to 100 for visualization
+      funnelChart.data = {
+        labels: ['Step 1', 'Step 2', 'Step 3', 'Step 4', 'Step 5'],
+        datasets: [{
+          label: 'Funnel Data',
+          data: funnelData.slice(0, 5),
+          backgroundColor: ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56', '#ff5722'],
+          borderColor: '#fff',
+          borderWidth: 1
+        }]
+      };
+      funnelChart.update();
+    };
+
+    // Handle incoming WebSocket messages
+    socket.onmessage = (event) => {
+      const numbers = JSON.parse(event.data);
+      updateCharts(numbers);
+    };
+  </script>
+</body>
+</html>

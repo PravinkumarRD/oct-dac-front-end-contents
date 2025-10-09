@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session & Local Storage</title>
+</head>
+
+<body>
+    <button id="readCompany">Log Company Name</button>
+    <script>
+
+        document.querySelector("#readCompany").addEventListener('click', function () {
+            sessionStorage.setItem('companyName', 'Bajaj Pvt. Ltd.' + new Date().toLocaleTimeString());
+            localStorage.setItem('trainerName', 'Pravinkumar R. D.' + new Date().toLocaleTimeString());
+            console.log(sessionStorage.getItem('companyName'));
+            console.log(localStorage.getItem('trainerName'));
+        });
+    </script>
+</body>
+
+</html>

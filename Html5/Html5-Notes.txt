@@ -1,0 +1,60 @@
+Product Owner => Business Analyst => Architect => Development => Testing => Deployment
+
+Http Request and Response
+
+State Management - 
+
+Client Side					Server Side
+1) Cookies [Transient/Persistant]
+2) Query String
+3) Web Storage
+	I) Session Storage
+	II) Local Storage
+4) Indexed DB
+5) data-* attributes
+
+
+There are two types of operations - 
+
+1) CPU Bound Operation [Non-Blocking Operations]
+2) IO Bound Operation [Blocking Operations]
+
+
+Browser engine is single threaded!
+
+
+https://codepen.io/pravinkumarcode/pen/zYLZwep
+
+SVG - Scalable Vector Graphics
+
+
+Web Socket and Server Sent Events - 
+	Both of them are used in RTC - Real Time Communication
+
+Web Socket [Two-Way/Bi-directional Communication]
+	Protocol ws://
+SSE - [One-Way Communication] [Server-To-Client]
+	Event Source
+
+
+Design a simple dashboard which will show 5 random values in a range of 1-100. If the value falls between - use [SSE]
+	1) 1-30 [Show Red Color box as a background with white color text]
+	2) 31-60 [Show Yellow Color box as a background with white color text]
+	2) 61-100 [Show Green Color box as a background with white color text]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
