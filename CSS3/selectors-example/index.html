@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 2.1 & 3.0 Selectors Demo</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.5;
+        }
+
+        /* 1. !important */
+        .important-demo p {
+            color: blue;
+        }
+
+        .important-demo .note {
+            color: red !important;
+        }
+
+        /* 2. :not() */
+        .not-demo p:not(.special) {
+            color: green;
+        }
+
+        /* 3. :first-of-type */
+        .first-of-type-demo p:first-of-type {
+            color: blue;
+        }
+
+        /* 4. :last-of-type */
+        .last-of-type-demo p:last-of-type {
+            color: red;
+        }
+
+        /* 5. :only-of-type */
+        .only-of-type-demo p:only-of-type {
+            color: purple;
+        }
+
+        /* 6. [attr*=value] */
+        .attr-demo a[href*="example"] {
+            color: orange;
+        }
+
+        /* 7. :target */
+        .target-demo #section1:target {
+            background: yellow;
+            padding: 5px;
+        }
+
+        /* 8. :nth-child(n) */
+        .nth-child-demo li:nth-child(2) {
+            color: red;
+        }
+
+        /* 9. :nth-last-child(n) */
+        .nth-last-child-demo li:nth-last-child(1) {
+            color: blue;
+        }
+
+        /* 10. :nth-of-type(n) */
+        .nth-of-type-demo p:nth-of-type(2) {
+            color: green;
+        }
+
+        /* 11. :nth-last-of-type(n) */
+        .nth-last-of-type-demo p:nth-last-of-type(1) {
+            color: brown;
+        }
+
+        /* 12. :last-child */
+        .last-child-demo span:last-child {
+            color: red;
+        }
+
+        /* 13. ::selection */
+        ::selection {
+            background: black;
+            color: white;
+        }
+
+        h2 {
+            background: #f3f3f3;
+            padding: 6px;
+            border-left: 4px solid #333;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS 2.1 & CSS 3.0 Selectors — Practical Demo</h1>
+
+    <!-- 1. !important -->
+    <h2>1. !important</h2>
+    <div class="important-demo">
+        <p class="note">This is important text (red, overrides blue).</p>
+    </div>
+
+    <!-- 2. :not() -->
+    <h2>2. :not()</h2>
+    <div class="not-demo">
+        <p>Paragraph 1</p>
+        <p class="special">Paragraph 2</p>
+        <p>Paragraph 3</p>
+    </div>
+
+    <!-- 3. :first-of-type -->
+    <h2>3. :first-of-type</h2>
+    <div class="first-of-type-demo">
+        <p>First paragraph</p>
+        <p>Second paragraph</p>
+        <span>Span text</span>
+    </div>
+
+    <!-- 4. :last-of-type -->
+    <h2>4. :last-of-type</h2>
+    <div class="last-of-type-demo">
+        <p>Para 1</p>
+        <p>Para 2</p>
+        <p>Para 3</p>
+    </div>
+
+    <!-- 5. :only-of-type -->
+    <h2>5. :only-of-type</h2>
+    <div class="only-of-type-demo">
+        <div>
+            <p>I'm the only paragraph</p>
+        </div>
+        <div>
+            <p>First</p>
+            <p>Second</p>
+        </div>
+    </div>
+
+    <!-- 6. [attr*=value] -->
+    <h2>6. [attr*=value]</h2>
+    <div class="attr-demo">
+        <a href="https://example.com/page1">Example Link</a><br>
+        <a href="https://mysite.com/page2">My Site Link</a>
+    </div>
+
+    <!-- 7. :target -->
+    <h2>7. :target</h2>
+    <div class="target-demo">
+        <a href="#section1">Go to Section 1</a>
+        <div id="section1">
+            <p>This is Section 1 (turns yellow when targeted)</p>
+        </div>
+    </div>
+
+    <!-- 8. :nth-child(n) -->
+    <h2>8. :nth-child(2)</h2>
+    <div class="nth-child-demo">
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+        </ul>
+    </div>
+
+    <!-- 9. :nth-last-child(1) -->
+    <h2>9. :nth-last-child(1)</h2>
+    <div class="nth-last-child-demo">
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3 (last)</li>
+        </ul>
+    </div>
+
+    <!-- 10. :nth-of-type(2) -->
+    <h2>10. :nth-of-type(2)</h2>
+    <div class="nth-of-type-demo">
+        <p>Para 1</p>
+        <span>Span 1</span>
+        <p>Para 2</p>
+    </div>
+
+    <!-- 11. :nth-last-of-type(1) -->
+    <h2>11. :nth-last-of-type(1)</h2>
+    <div class="nth-last-of-type-demo">
+        <p>Para 1</p>
+        <p>Para 2</p>
+        <p>Para 3 (last)</p>
+    </div>
+
+    <!-- 12. :last-child -->
+    <h2>12. :last-child</h2>
+    <div class="last-child-demo">
+        <p>Para 1</p>
+        <span>Span 1 (last child)</span>
+    </div>
+
+    <!-- 13. ::selection -->
+    <h2>13. ::selection</h2>
+    <p>Select this text to see custom selection color (white on black).</p>
+
+</body>
+
+</html>

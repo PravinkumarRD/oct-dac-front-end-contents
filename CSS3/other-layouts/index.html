@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3 Layout Types</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f4f4f4;
+        }
+
+        h2 {
+            background: #333;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* =============================
+     1️ - TABLE LAYOUT
+  ==============================*/
+        .table-layout {
+            display: table;
+            /* Creates a table-like structure */
+            width: 100%;
+            border-collapse: collapse;
+            /* Removes gaps between table cells */
+            margin-bottom: 40px;
+            background: white;
+        }
+
+        .table-row {
+            display: table-row;
+        }
+
+        .table-cell {
+            display: table-cell;
+            border: 1px solid #999;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* =============================
+     2️ - BOX (FLEXBOX) LAYOUT
+  ==============================*/
+        .flex-layout {
+            display: flex;
+            /* Turns it into a flex container */
+            justify-content: space-around;
+            /* Distributes space evenly */
+            align-items: center;
+            /* Vertically center items */
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .flex-item {
+            background: #4caf50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            flex: 1;
+            /* All items grow equally */
+            margin: 10px;
+            border-radius: 5px;
+        }
+
+        /* =============================
+     3️ - COLUMN LAYOUT
+  ==============================*/
+        .column-layout {
+            column-count: 3;
+            /* Split text into 3 columns */
+            column-gap: 30px;
+            /* Space between columns */
+            column-rule: 2px solid #ccc;
+            /* Line between columns */
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>1️ - Table Layout</h2>
+    <div class="table-layout">
+        <div class="table-row">
+            <div class="table-cell">Header 1</div>
+            <div class="table-cell">Header 2</div>
+            <div class="table-cell">Header 3</div>
+        </div>
+        <div class="table-row">
+            <div class="table-cell">Row 1 - Col 1</div>
+            <div class="table-cell">Row 1 - Col 2</div>
+            <div class="table-cell">Row 1 - Col 3</div>
+        </div>
+        <div class="table-row">
+            <div class="table-cell">Row 2 - Col 1</div>
+            <div class="table-cell">Row 2 - Col 2</div>
+            <div class="table-cell">Row 2 - Col 3</div>
+        </div>
+    </div>
+
+    <h2>2️ - Flex (Box) Layout</h2>
+    <div class="flex-layout">
+        <div class="flex-item">Box 1</div>
+        <div class="flex-item">Box 2</div>
+        <div class="flex-item">Box 3</div>
+    </div>
+
+    <h2>3️ - Column Layout</h2>
+    <div class="column-layout">
+        <p>
+            CSS3 column layout allows you to flow long text into multiple columns,
+            just like in newspapers or magazines. It automatically balances content
+            across columns and maintains consistent spacing. You can control the
+            number of columns using <code>column-count</code>, spacing with
+            <code>column-gap</code>, and even add a visual divider using
+            <code>column-rule</code>. Resize your browser to see how the columns
+            adapt to different widths. This is especially useful for displaying
+            articles, lists, or descriptive text in a compact, readable form.
+        </p>
+    </div>
+
+</body>
+
+</html>
