@@ -1,0 +1,48 @@
+/* Reset & base */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym,
+address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd,
+ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  color: #432100;
+  padding-top: 1em;
+  background-repeat: no-repeat;
+  font-family: Aargh, Arial, sans-serif;
+}
+
+body {
+  background-color: #00aaaa;
+  background: linear-gradient(to top, #432100 30%, #00aaaa 70%);
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0.7, #00aaaa), color-stop(0.3, #432100));
+  background: -ms-linear-gradient(bottom, #432100 30%, #00aaaa 70%);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: #222;
+}
+
+h1 { font-size: 2em; }
+h2 { font-size: 1.5em; }
+
+@font-face { font-family: Aargh; src: url("../fonts/Aaargh-webfont.woff") format("woff"); }
+@font-face { font-family: DJ; src: url("../fonts/DJ-webfont.woff") format("woff"); }
+
+#title, #subtitle { font-family: DJ, Script; }
+#title { text-shadow: 0.16em 0.16em 0.5em #aa5500; }
+h1, h2 { text-shadow: 0.016em 0.016em 0.25em #aa5500; }
+
