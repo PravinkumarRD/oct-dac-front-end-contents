@@ -1,0 +1,8 @@
+//Use $ sign to declare the variables
+$primary-color: blue;
+$secondary-color: yellow;
+
+body {
+    background-color: $primary-color;
+    color: $secondary-color;
+}
