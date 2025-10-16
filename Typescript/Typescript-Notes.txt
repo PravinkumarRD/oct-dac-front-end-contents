@@ -1,0 +1,11 @@
+What is Typescript?
+	Typescript is a superset of JavaScript with strong typing support along with new types. 
+	It offers compile time type safety/type checking
+	It is a development language
+
+	It does transpilation process
+		Transpilation = Transform  + Compilation
+
+	Typescript has its own compiler called TSC.exe which converts Typescript code into JavaScript for the specified version of ECMAScript. And this process is called Transpilation
+
+	Typescript => TSC.exe => JavaScript
