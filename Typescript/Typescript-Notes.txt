@@ -1,0 +1,146 @@
+What is Typescript?
+	Typescript is a superset of JavaScript with strong typing support along with new types. 
+	It offers compile time type safety/type checking
+	It is a development language
+
+	It does transpilation process
+		Transpilation = Transform  + Compilation
+
+	Typescript has its own compiler called TSC.exe which converts Typescript code into JavaScript for the specified version of ECMAScript. And this process is called Transpilation
+
+	Typescript => TSC.exe => JavaScript
+
+	Typescript compiler is configurable! It has two options
+		1) Command Line Options
+		2) Typescript configuration file [tsconfig.json]
+
+	For reference - https://www.typescriptlang.org/docs/handbook/compiler-options.html
+
+Features - 
+	1) New Types
+	2) Enum
+	3) Namespace
+	4) Access Modifiers
+	5) Interface
+	6) Generics
+	8) Type Inference
+	9) Decorators and Metadata
+
+
+Object Oriented Programming Features - 
+
+	1) Abstraction
+	2) Encapsulation
+		[Access Modifiers - Private, Protected and Public]
+	3) Inheritance
+		Generalization - To - Specialization
+		Types of classes [Abstract, Concrete/Non-Abstract, Final/Sealed, Static]
+	4) Polymorphism
+
+
+Typescript supports interface
+
+Generics [Template - [Class/Interface/Method/Property]]
+
+Purchase Order System
+	Customer, Employee, Supplier, Shipper, Order, OrderDetail, Category, Product, Invoice
+
+	Perform CRUD operation for each entity
+
+T=Type
+
+interface CommonCrud<T>{
+	getAll():T[];
+	getDetails(id:number):T;
+	insert(t:T):void;
+	update(t:T):void;
+	delete(id:number):void;
+}
+
+class CrudRepository<T> implements CommonCrud<T>{
+	getAll():T[]{
+		//logic DB logic/AJAX
+	}
+	getDetails(id:number):T{
+		//logic DB logic/AJAX
+
+	}
+	insert(t:T):void{
+		//logic DB logic/AJAX
+	}
+	update(t:T):void{
+		//logic DB logic/AJAX
+	}
+	delete(id:number):void{
+		//logic DB logic/AJAX
+	}
+}
+
+const customerCrud:CommonCrud<Customer>=new CrudRepository<Customer>();
+
+const employeeCrud:CommonCrud<Employee>=new CrudRepository<Employee>();
+
+
+Meta Programming [Metadata] - Still under draft
+	experimental decorator Support : true
+
+What is metadata?
+A function - 
+	Two Types - 
+		1) Simple function
+			function logger(){
+
+			}
+		2) Factory Function
+			function logger(a, b, c){
+				....
+				return function(){//Where to use this metadata class/method/property/field/parameter/...
+
+				}
+			}
+
+Metadata are used using decorator pattern [@]
+	@logger
+	@logger({...})
+	class MyClass{
+
+	}
+
+class Customer{
+	[Required]
+	@required() - decorator pattern
+	public string ContactName {get; set;}
+}
+
+1) Modifying the logic of methods/properties of a given class externally
+2) Providing information about something
+
+Angular framework all building blocks use metadata
+
+@Pipe({
+	..
+})
+
+@Injectable({
+
+})
+
+@Component({
+
+})
+class App{
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+		

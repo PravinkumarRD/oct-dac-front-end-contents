@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "outDir": "src",
+        "strict": true,
+        "noEmitOnError": true,
+        "sourceMap": true,
+        "target": "es2024"
+    }
+}
