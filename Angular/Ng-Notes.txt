@@ -1,0 +1,173 @@
+Why Angular?
+1) One framework used for building web application/mobile web apps/desktop/mobile applications
+2) Angular framework is a modular framework
+3) You can also build your application as modular application
+4) It will improve the performance of the application by allowing you to eager or lazy loading of the application features
+5) Angular targets its framework for speed and Performance
+6) Angular uses Ivy as a rendering engine 
+7) Angular supports multiple languages for development
+	1) Typescript (2) Dart
+8) Multiple compilation models
+	1) JIT Compilation (2) Ahead of Time [AoT] Compilation
+9) Component based development 
+	[Angular provides built-in components/custom components]
+10) Directives - Extends the behaviour of Html element
+	[Angular provides built-in directive/custom directives]
+11) Data Formatting - Pipes
+	[Angular provides built-in pipes/custom pipes]
+12) Service based implementation [Reusability of data and logic]
+13) Built-in IoC and D.I. support
+14) Http Service [CRUD operations - GET/POST/PUT/PATCH/DELETE]
+15) RxJS Library [Third-party]
+	Reactive Extensions for JavaScript Library
+		Offers Observable-Observer pattern
+16) Develop SPA - [Single Page Application]
+17) Routing Library for SPA [@angular/router]
+18) Rich Animation [@angular/animations]
+19) Rich Data Binding 
+	[Source-To-Destination/Destination-To-Source/Two-Way/One-Time]
+20) CDC - Change Detection Cycle
+21) Zone.js
+22) Zoneless Change Detection
+23) Signals  [Stable in 20+]
+24) Angular Material Library and CDK - Component Development Kit
+	@angular/mateirals
+25) Angular Project - 
+	1) Application (2) Library
+26) Angular Elements
+	Use Angular components in Non-Angular applications
+27) Angular offers rich forms support - [Angular Forms]
+	1) Template Driven Forms
+	2) Reactive Forms
+28) Angular offers SSR - Server Side Rendering
+29) Angular CLI - Command Line Interface tool
+30) Angular application comes with Testing framework Jasmine [Unit Test Cases] and E2E Tests
+31) Test Runner Karma tool
+32) Internationalize/Globalization support with i18N library
+33) Progressive Web Application Development in Angular
+34) By default, Angular offers standalone - [Components/Pipes/Directives] development
+35) Offered Control Follow Statements [Earlier we used directives for the same]
+	Earlier - *ngFor/*ngIf/*ngSwitch [Directives]
+	Today - @if { }/@if-else { }/@switch { }/@for { }
+
+1) Create First Angular Application
+
+	NPM - Node Package Manager
+
+Step - 1 Install Angular CLI tool globally on your machine
+	npm install -g @angular/cli
+Step - 2 Create new Angular application
+	ng new app-name
+Step - 3 CD to application folder
+Step - 4 Run the application
+		ng serve
+		ng serve -o
+
+Bootstrapping process of Angular application
+
+app.component.[ts/html/css/spec.ts]
+employees.service.[ts/spec.ts]
+capital-case.pipe.[ts/spec.ts]
+highlight.directive.[ts/spec.ts]
+app.module.ts
+
+
+Angular Project Structure
+
+SRC
+	main.ts
+	index.html
+	styles.css
+	app
+		app.[ts/html/css/spec.ts] Root Component
+		app.config.ts
+		core [You will add global - services/interceptors/guards]
+			guards
+				....
+				....
+			interceptors
+				....
+				....
+			services
+				....
+
+		shared
+			components
+				not-found
+					not-found.[ts/html/css/spec.ts]
+				...
+			utilities
+				utilities.ts
+			pipes
+				pipe-name.[ts/spec.ts]
+			directives
+				directive-name.[ts/spec.ts]
+
+		features
+			security
+				components
+					login
+						login.[ts/html/css/spec.ts]
+					change-password
+						change-password.[ts/html/css/spec.ts]
+				models
+					user.ts
+				services
+					security.ts
+				pipes
+					pipe-name....
+				directives
+					directive-name...
+			products
+				components
+					products-list
+						products-list...
+					product-details
+						product-details...
+					register-product
+						register-product
+				services
+
+				models
+
+				pipes
+
+				directives
+
+
+ng generate c, d, p, s, i ,interceptor, cl, guard, Enum, ...
+
+
+ng g c features/carts/components/carts-list
+ng g c features/carts/components/cart-details
+ng g c features/carts/components/generate-cart
+
+ng g cl features/carts/models/cart
+
+ng g Enum features/carts/models/payment-choice
+
+ng g s features/carts/services/carts-service
+
+ng g p features/carts/pipes/demo
+
+ng g d features/carts/directives/game-changer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
