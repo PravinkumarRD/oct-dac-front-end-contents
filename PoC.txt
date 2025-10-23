@@ -10,3 +10,23 @@ SPA - Single Page Application
 	Authorization
 	Security Trimming
 	Most of the features of Angular framework
+
+PoC Assignments - 
+
+	1) Find out the required information about the Project
+	2) Please draw the workflow of the PoC accordingly using https://www.drawio.com/ [In-detail]
+	3) Decide how many entities will be required for the PoC along with their relationships
+	4) Draw a rough layout of the PoC [How will it look like - Pen and Paper]
+	5) How many components and the project folder structure required for the PoC
+	6) Create PoC project and configure CSS Bootstrap framework
+
+
+
+
+
+
+
+
+
+
+
