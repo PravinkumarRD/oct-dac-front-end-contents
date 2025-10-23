@@ -152,10 +152,150 @@ ng g p features/carts/pipes/demo
 
 ng g d features/carts/directives/game-changer
 
+Major Building Blocks in Angular
+
+These are all implemented using Typescript Class
+
+1) Component
+2) Pipe
+3) Service
+4) Directive
+
+Angular Core Library/Package provides Metadata. The job of metadata is to tell Angular framework how to process a class/property/method/parameters/...
+
+@angular/core
+
+For example - 
+
+@Component({
+	selector:'bajaj-app',
+	imports:[], //Dependencies list of this component
+	templateUrl:'./app.html', //External/Linked template
+	template:''/""/`` //[Inline Template]
+	styleUrl:'./app.css'
+
+})
+export class App{
+
+}
+
+Component Template - 
+	Two types of template
+		1) Inline Template - When you have maximum 2-3 lines of Html code
+			a) Single - single/double quotes
+			b) Multi-line - Backtick Syntax
+		2) Linked/External Template - When you have more than 3 lines of code
+			[.html page]
+
+--------------------
+
+@Injectable({
+
+})
+export class BajajApi{
+
+}
+
+@Pipe({
+
+})
+export class DataFormatterPipe{
+
+}
+
+@Directive({
+
+})
+export class Highlighter{
+
+}
+
+
+
+Data Binding - 
+	1) Source-To-Destination - 
+		a) Interpolation - {{property/expression}} - For string/text binding
+		b) Property Binding/DOM Property Binding - [dom-property-name] - Number/Boolean/String/Array/Object
+			src/disable/href/...
+
+	Property Binding does sanitization of script/bad tags
+		
+
+In your component, load a dependency called CommonModule which comes from a library/package @angular/common
+
+Directives
+	*ngIf/else
+	*ngFor
+	*ngSwitch...
+
+Using control flow statements - 
+	@if()/@if/@else
+	@for-of loop
+	@switch
+		@case...
+
+
+
+1) Parent-To-Child - 
+	Declare a property in child component and decorate the same property with @Input() metadata and use this property with child component selector with property binding syntax
+	For Example - 
+		<app-event-details [event]="selectedEvent"></app-event-details>
+
+2) Child-To-Parent - 
+	Declare a property in child component with a special type called EventEmitter<T> and decorate this property with @Output() metadata. Fire/Emit the data from the child component by calling emit() method of EventEmitter object which you want to send it to parent component
+	Handle the event with event binding syntax of child component selector in which you call the parent component function which will receive the emitted data from the child component as a payload using a very special object called "$event"
+
+	For Example - 
+		<app-event-details [event]="selectedEvent" (eventName)="parentFunction($event)"></app-event-details>
+
+
+Data Formatting with Angular pipes
+   CommonModule => @angular/common
+
+	1) In-built Pipes
+	2) Third-party Pipes
+	3) Custom Pipes
+
+	propertyName | PipeName
+	propertyName | PipeName:'agr1'
+	propertyName | PipeName:'agr1':'arg2':...
+
+How does pipe work internally?
 
 
 
 
+
+import { Pipe, PipeTransform } from '@angular/core';
+
+
+@Pipe({
+	name:'sampleDemo'
+})
+export class SampleDemoPipe implements PipeTransform {
+
+	transform(value:unknown, ...args:unknown[]):unknown{
+		//check if there is/are arguments. if not define a default value for an argument
+		//logic-process the value based on the argument(s)
+		return the formatted value
+	}
+}
+
+
+propertyName|sampleDemo:'abc':'378'
+
+evenCode|lowercase
+
+
+@Pipe({
+	name:'lowercase'
+})
+export class LowercasePipe implements PipeTransform {
+
+	transform(value:string, ...args:string[]):string{
+		return value.toLocaleLowerCase();		
+	}
+}
 
 
 
