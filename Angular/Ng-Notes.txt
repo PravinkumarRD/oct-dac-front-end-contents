@@ -220,7 +220,12 @@ Data Binding -
 
 	Property Binding does sanitization of script/bad tags
 		
+	2) Destination-To-Source - 
+		(event)="function()"
+	3) Two-Way - 
+		[(ngModel)]="propertyName"
 
+		ngModel - FormsModule => @angular/forms
 In your component, load a dependency called CommonModule which comes from a library/package @angular/common
 
 Directives
@@ -296,6 +301,271 @@ export class LowercasePipe implements PipeTransform {
 		return value.toLocaleLowerCase();		
 	}
 }
+
+
+Custom Pipe - 
+	1) DateGlobalizationPipe
+		startDate | dateGlobalization
+		startDate | dateGlobalization:'ja-JP'
+
+
+
+Searching Events
+
+
+events.filter((event)=>event.eventName.toLocaleLowercase().inclues(this.searchChars.toLocaleLowercase())
+
+
+
+
+Introduction to MongoDB Server
+
+ORDBMS 						NoSQL Servers
+	Oracle/MS SQL Server/MySQL/...			MongoDB Server
+		Databases					Databases
+			Table						Collection
+				Cols/Rows					Documents
+
+What is document?
+	It is a JSON like object
+
+{
+	_id:'hsdhjsd',
+	name:'Pravinkumar R. D.',
+	addresses:[permanentAddress:{
+		roadNo:2738,
+		areaName:'ABCD'
+	},
+		currentAddress:{
+		roadNo:2738,
+		areaName:'ABCD'
+
+		}
+	],
+	city:'Pune',
+	skillSets:[
+		'MS','JS','Databases'
+	]
+}
+
+Queries - 
+
+	1) create new database in MongoDB
+		use bajaj-oct-2025-events-db;
+	2) create new collection in a connected database
+		db.createCollection('users');
+	3) list all the collections
+		show collections;
+	4) Insert document(s) in a collection
+		a) insertOne({...})
+			db.users.insertOne({email:'alisha.c@bajaj.com',password:'Welcome@123',role:'Hr'});
+			db.users.insertOne({email:'manish.kaushik@bajaj.com',password:'Welcome@123',role:'Employee'});
+		b) insertMany([{...},{...}]);
+	5) Fetch all the documents
+		db.users.find();
+		
+
+For Insurance Policy Management System -
+
+Base URL - http://localhost:9091/api/
+
+For eCommerce REST API
+
+Base URL - http://localhost:9090/api/
+
+
+eCommerce Application Features
+
+1) Categories
+2) Products
+3) Carts
+4) Invoices
+5) Security
+
+
+
+
+
+
+
+
+
+Introduction to Services in Angular 
+
+1) Separation of Concern
+2) Reusability of data and logic
+3) Easy Testing
+4) Scoping of services - 
+	1) Component Level hierarchy 
+	2) Application Level
+	3) Platform Level
+5) Consuming services via Dependency Injection
+	constructor dependency injection
+	function dependency injection [Recommended]
+6) IoC [Injector] container support out-of-the-box
+7) Implementation of Singleton pattern
+
+
+Component Lifecycle and Lifecycle Hooks
+
+1) Creates a new instance of a component
+	Execute the constructure 
+2) Executes Component Lifecycle Hooks in sequence
+	What are hooks?
+		Special Methods which are invoked by component lifecycle place-to-place
+		Two Types - 
+			1) Hooks which are executed exactly once
+				Methods which ends with the keyword called Init
+					For example-  ngOnInit():void{
+
+						      }
+						      ngOnDestory():void{
+							//clean-up code - Un-subscription 
+						      }
+			2) Hooks which are executed multiple times based on situation
+				@Input()
+				For example - 	ngOnChanges():void{
+
+						}
+
+Students Events REST API endpoints - 
+
+	Run the API using node command
+		node events-rest-server.js
+
+	1) Events
+		http://localhost:9090/api/events [GET]
+		http://localhost:9090/api/events/1002 [GET]
+		http://localhost:9090/api/events [POST]
+	2) Employees
+		http://localhost:9090/api/employees [GET]
+		http://localhost:9090/api/employees/1002 [GET]
+		http://localhost:9090/api/employees [POST]
+
+Http/AJAX calls in Angular Framework
+
+	@angular/common/http
+		HttpClient Service [Class] [Use it via Dependency Injection]
+			You can perform CRUD operations using HttpClient class methods 
+				[GET, POST, PUT, DELETE]
+
+				1) get()/get<T>(url, reqOptions:{}) => Observable<T>
+				1) post()/get<T>(url, data ,reqOptions:{}) => Observable<T>
+				1) put()/get<T>(url, data ,reqOptions:{}) => Observable<T>
+				1) delete()/get<T>(url, reqOptions:{}) => Observable<T>
+
+	Reactive Extensions for JavaScript library [RxJS]
+		The Core Object of RxJS is an Observable<T>
+
+Bajaj Events Portal Application - 
+
+SRC
+	main.ts
+	index.html
+	styles.css
+	app
+		app.[ts/html/css/spec.ts] Root Component
+		app.config.ts
+		core [You will add global - services/interceptors/guards]
+			guards
+				....
+				....
+			interceptors
+				....
+				....
+			services
+				....
+
+		shared
+			components
+				not-found
+					not-found.[ts/html/css/spec.ts]
+				...
+			utilities
+				utilities.ts
+			pipes
+				pipe-name.[ts/spec.ts]
+			directives
+				directive-name.[ts/spec.ts]
+
+		features
+			security
+				components
+					login
+						login.[ts/html/css/spec.ts]
+					change-password
+						change-password.[ts/html/css/spec.ts]
+				models
+					user.ts
+				services
+					security.ts
+				pipes
+					pipe-name....
+				directives
+					directive-name...
+			products
+				components
+					products-list
+						products-list...
+					product-details
+						product-details...
+					register-product
+						register-product
+				services
+
+				models
+
+				pipes
+
+				directives
+
+
+1) Complete Page Post back 
+2) Partial Page Rendering
+
+What is Single Page Application?
+	Render a single page with the first request and update the parts of the webpage by maintaining/manipulating the history object using client side routing library
+
+@angular/router for building SPA
+
+	1) Routes declaration - 
+		http://localhost:4200 [Default Route] [Default Component]
+		http://localhost:4200/home [Specific Route] [Home Component]
+		http://localhost:4200/employees [Specific Route] [EmployeesList Component]
+		http://localhost:4200/employees/new [Specific Route] [RegisterEmployee Component]
+		http://localhost:4200/employees/4242 [Dynamic] [EmployeeDetails Component]
+		http://localhost:4200/events [Specific Route] [EventsList Component]
+		http://localhost:4200/events/new [Specific Route] [RegisterEvent Component]
+		http://localhost:4200/events/1002 [Dynamic] [EventDetails Component]
+		http://localhost:4200/events?id=2382&lat=23.282 [Dynamic] [EventDetails Component]
+		http://localhost:4200/login [Specific Route] [Login Component]
+		http://localhost:4200/register [Specific Route] [RegisterUser Component]
+		...
+	2) Placeholder where a component will be loaded
+		<router-outlet></router-outlet>
+	3) Programmatic Routing
+		Services
+	4) Reading parameter values or query string values
+		Service
+	5) Declarative Route attributes
+		routerLink, routerLinkActive, ...
+	6) Securing Routes
+		Route Guards
+	7) Extra data with your routes -  For example Page Title, other data
+	8) With the routes, you can lazy load your components
+
+
+
+Assignments - Bajaj Ecommerce Application [MEAN]
+
+	1) Add Navigation component and footer component
+	2) Add Home Component
+	3) Products feature
+		Products list
+			Pagination
+		Products Details
+	4) Convert the application into SPA
+
 
 
 
