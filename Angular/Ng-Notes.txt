@@ -441,7 +441,20 @@ Students Events REST API endpoints -
 		http://localhost:9090/api/employees [GET]
 		http://localhost:9090/api/employees/1002 [GET]
 		http://localhost:9090/api/employees [POST]
+	3) Security
+		http://localhost:9090/api/users/authenticate [Login - POST]
+		http://localhost:9090/api/users [POST - Sign Up/Register]
 
+		{
+    			"email":"alisha.c@bajaj.com",
+			"password":"Welcome@123",
+			"role":"Hr"
+		}
+		{
+    			"email":"manish.kaushik@bajaj.com",
+			"password":"Welcome@123",
+			"role": "Employee"
+		}
 Http/AJAX calls in Angular Framework
 
 	@angular/common/http
@@ -565,6 +578,125 @@ Assignments - Bajaj Ecommerce Application [MEAN]
 			Pagination
 		Products Details
 	4) Convert the application into SPA
+
+
+@defer
+
+@placeholder
+
+
+Angular Forms - 
+	1) Template Driven Forms
+		You will use Two-Way data binding syntax 
+		@angular/forms => FormsModule=>ngModel	
+			[(ngModel)]
+		Control of this form is taken care by Angular [Angular decides how to control the inputs]
+		Validations [Custom/Native]
+	Template Reference Variable [#email]
+
+
+	2) Reactive Forms
+		@angular/forms =>ReactiveFormsModule [Directives - used for binding in Form/Input elements]
+
+		FormGroup, FormControl, Validators
+
+	1) FormGroup is a collection of FormControl
+	2) FormControl contains state [Default Value] and validations
+
+
+class User{
+	[key]
+	@key()
+	public int UserId { get; set; }
+	[Required(ErrorMessage="Email is a required field")]
+	@required()
+	public string Email { get; set; }
+	@required()
+	@minlength(6)
+	public int Password { get; set; }
+}
+
+In Typescript - 
+
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+class Register {
+	eventForm:FormGroup  new FormGroup({
+		eventId: new FormControl(0,Validators.required),
+		eventCode: new FormControl('NOCODE',[Validators.required, Validators.maxlength(6), Validators.minlength(6)]),,
+		...
+		description:new FormControl(),
+		venue: new FormGroup({
+			name:new FormControl('IBIS',Validators.required),
+			address: new FormGroup({
+				city:new FormControl('Pune')
+			})
+		})
+
+	});
+}
+
+
+event:Register=new Register();
+
+
+<form [formGroup]="event.EventForm"
+	<input type="number" formControlName="eventId"/>
+	<input type="text" formControlName="eventCode" />
+	....
+	<div [formGroup]="event.eventForm.venu">
+		<input type="number" formControlName="name"/>
+		<div [formGroup]="event.eventForm.venu.address">
+			<input type="number" formControlName="city"/>
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+/login?returnurl=/events
+
+WebView Build command - 
+
+ng build --configuration production --base-href ./
+
+
+Role Based Access Control - [RBAC]
+
+1) Employee - 
+	1) Register himself/herself
+	2) See other employees list and their details
+	3) See list of events and details
+	4) Employee can register for an event
+	5) Give the feedback to attended events
+2) Hr - 
+	1) All responsibilities of Employee
+	2) Schedule the events
+		Add New
+		Update Existing event
+		Remove/Cancel the event
+	3) Take feedback
+	4) Reports/Dashboards
+
+
+
+/events [EventsList component] [Parent Default Route]
+/events/register [RegisterEvent] [Named Child Route]
+/events/:id [EventDetails] [Parameterized Child Route]
+
+/auth/login
+/auth/change-password
+/auth/forgot-password
+
+
+
+
+
+
 
 
 
